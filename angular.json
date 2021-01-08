@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -124,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "CRUD-Angular-Firebase"
+  "defaultProject": "CRUD-Angular-Firebase",
+  "cli": {
+    "analytics": "697177bd-5161-42eb-9646-d6658ab4584d"
+  }
 }
