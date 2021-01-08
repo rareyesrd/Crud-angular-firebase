@@ -1,1 +1,12 @@
-<p>todo works!</p>
+<div class="container mt-5">
+  <h3>Crud App</h3>
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <input type="text" name="task" placeholder="Create a new task" class="form-control" [(ngModel)]="task">
+      <button class="btn btn-success" (click)="addTodo()">Submit</button>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <app-todo-item *ngFor="let todo of todos" [todo]="todo"> </app-todo-item>
+    </div>
+  </div>
+</div>

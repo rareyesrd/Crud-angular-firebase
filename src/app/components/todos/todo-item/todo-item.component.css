@@ -1,0 +1,10 @@
+.close{
+    background-color: red;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.isComplete{
+    text-decoration: line-through;
+}
