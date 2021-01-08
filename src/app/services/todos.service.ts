@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Todos } from '../models/todos';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +25,18 @@ export class TodosService {
     }
   ];
 
-  constructor() { }
+  constructor(private db: AngularFirestore) {
+    // const things = db.collection('todos').valueChanges()
+    // .subscribe(
+    //   (thing) => {
+    //     console.log(thing);
+    //   }
+    // );
+   }
 
-  onAddTodo(id: number, task: string, completed: boolean): void {
+  onAddTodo(task: string, completed: boolean): void {
     this.todos.push({
-      id,
+      id: this.todos.length + 1,
       task,
       completed
     });

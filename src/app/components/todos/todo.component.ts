@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todos } from 'src/app/models/todos';
 import { TodosService } from 'src/app/services/todos.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo',
@@ -10,14 +11,18 @@ import { TodosService } from 'src/app/services/todos.service';
 export class TodoComponent implements OnInit {
   todos: Todos[];
   task: string;
-  constructor(private todosService: TodosService) { }
+  item$: Observable<any[]>;
+
+  constructor(private todosService: TodosService) {
+  }
 
   ngOnInit(): void {
     this.todos = this.todosService.todos;
   }
 
   addTodo(): void {
-    this.todosService.onAddTodo((this.todos.length + 1), this.task, false);
+    this.todosService.onAddTodo(this.task, false);
+    this.task = '';
   }
 
   onDeleteTodo(todo: Todos): void {
