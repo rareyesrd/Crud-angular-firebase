@@ -8,7 +8,7 @@ import { TodosService } from 'src/app/services/todos.service';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-  todos: Todos[] = [];
+  todos: Todos[];
   task: string;
   constructor(private todosService: TodosService) { }
 
@@ -18,5 +18,9 @@ export class TodoComponent implements OnInit {
 
   addTodo(): void {
     this.todosService.onAddTodo((this.todos.length + 1), this.task, false);
+  }
+
+  onDeleteTodo(todo: Todos): void {
+    this.todos = this.todos.filter(t => t.id !== todo.id);
   }
 }

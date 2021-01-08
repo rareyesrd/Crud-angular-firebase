@@ -4,7 +4,7 @@
         <div [ngClass]="{'isComplete': todo.completed}">
             <input type="checkbox"
             (change)="onCompleted(todo)">
-            {{ todo.task }}
+             {{ todo.task }}
         </div>
       <div class="close" (click)="onDelete(todo)"> X </div>
     </div>

@@ -31,13 +31,6 @@ export class TodosService {
       task,
       completed
     });
-    console.log(this.todos);
   }
 
-  onDeleteTodo(id: number): void {
-    const index = this.todos.indexOf(todo.id);
-    if (index > -1) {
-      this.todos.splice(index, 1);
-    }
-  }
 }
