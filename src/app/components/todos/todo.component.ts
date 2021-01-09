@@ -23,7 +23,7 @@ export class TodoComponent implements OnInit {
   }
 
   addTodo(): void {
-    this.todos.push({
+    this.db.list(`Todos`).push({
       id: this.todos.length + 1,
       task: this.task,
       completed: false,
@@ -32,7 +32,11 @@ export class TodoComponent implements OnInit {
   }
 
   onDeleteTodo(todo: Todos): void {
-    const tutRef = this.db.list(`Todos`);
-    tutRef.remove(`${todo.id}`);
+    const ref = this.db.list(`Todos`).valueChanges()
+    .subscribe((todo) => {
+      console.log(todo.id);
+    });
+    // console.log(ref);
+    // ref.remove(`${todo.id}`);
   }
 }
