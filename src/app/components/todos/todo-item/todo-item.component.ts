@@ -30,6 +30,10 @@ export class TodoItemComponent implements OnInit {
     todo.completed = !todo.completed;
   }
 
+  onEdit(todo: Todos) {
+    this.todosService.selectedProduct = Object.assign({}, todo);
+  }
+
   onDelete($key: string) {
     if (confirm('Are you sure you want to delete it?')) {
       this.todosService.deleteProduct($key);

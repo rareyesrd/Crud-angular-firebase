@@ -6,7 +6,10 @@
             (change)="onCompleted(todo)">
              {{ todo.task }}
         </div>
-      <div class="close" (click)="onDelete(todo.$key)"> X </div>
+        <div class="d-flex">
+          <div class="update mr-1" (click)="onEdit(todo)"><i class="fa fa-pencil-alt"></i> </div>
+          <div class="close" (click)="onDelete(todo.$key)"><i class="fa fa-window-close"></i> </div>
+        </div>
     </div>
   </div>
 </ul>
