@@ -11,7 +11,7 @@ import { TodosService } from 'src/app/services/todos.service';
 export class TodoComponent implements OnInit {
   todos: any[];
   task: string;
-  constructor(private todoService: TodosService) {}
+  constructor(public todoService: TodosService) {}
 
   ngOnInit(): void {
     this.todoService.getProducts();
