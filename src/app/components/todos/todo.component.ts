@@ -9,12 +9,23 @@ import { TodosService } from 'src/app/services/todos.service';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
+  todoList: Todos[];
   todos: any[];
   task: string;
   constructor(public todoService: TodosService) {}
 
-  ngOnInit(): void {
-    this.todoService.getProducts();
+  ngOnInit() {
+    return this.todoService
+      .getProducts()
+      .snapshotChanges()
+      .subscribe((item) => {
+        this.todoList = [];
+        item.forEach((element) => {
+          let x = element.payload.toJSON();
+          x['$key'] = element.key;
+          this.todoList.push(x as Todos);
+        });
+      });
   }
 
   addTodo(todoForm: NgForm) {

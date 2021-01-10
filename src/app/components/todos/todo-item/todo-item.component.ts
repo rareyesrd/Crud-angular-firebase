@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Todos } from 'src/app/models/todos';
 import { TodosService } from 'src/app/services/todos.service';
 
@@ -8,22 +8,13 @@ import { TodosService } from 'src/app/services/todos.service';
   styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent implements OnInit {
-  todoList: Todos[];
+
+  @Input() todo: Todos;
 
   constructor(private todosService: TodosService) {}
 
   ngOnInit() {
-    return this.todosService
-      .getProducts()
-      .snapshotChanges()
-      .subscribe((item) => {
-        this.todoList = [];
-        item.forEach((element) => {
-          let x = element.payload.toJSON();
-          x['$key'] = element.key;
-          this.todoList.push(x as Todos);
-        });
-      });
+    
   }
 
   onCompleted(todo: Todos): void {

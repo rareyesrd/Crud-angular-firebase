@@ -10,7 +10,7 @@
       </form>
     </div>
     <div class="col-sm-12 col-md-8">
-      <app-todo-item> </app-todo-item>
+      <app-todo-item  *ngFor="let todo of todoList" [todo]="todo"> </app-todo-item>
     </div>
   </div>
 </div>

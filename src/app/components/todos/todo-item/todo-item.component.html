@@ -1,6 +1,6 @@
 <ul class="list-group">
   <div class="list-group-item mt-3">
-    <div class="d-flex align-items-center justify-content-between mt-2" *ngFor="let todo of todoList">
+    <div class="d-flex align-items-center justify-content-between mt-2">
         <div [ngClass]="{'isComplete': todo.completed}">
             <input type="checkbox"
             (change)="onCompleted(todo)">
