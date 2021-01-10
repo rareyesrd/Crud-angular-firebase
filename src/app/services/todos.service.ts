@@ -1,23 +1,35 @@
 import { Injectable } from '@angular/core';
-// import { Todos } from '../models/todos';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Todos } from '../models/todos';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodosService {
-  constructor() {
-    
+  todoList: AngularFireList<any>;
+  selectedProduct: Todos = new Todos();
+
+  constructor(private db: AngularFireDatabase) {}
+
+  getProducts() {
+    return (this.todoList = this.db.list('Todos'));
   }
 
-  // getTodos(): any[] {
-  //   return this.todos.slice();
-  // }
+  onAddTodo(todo: Todos) {
+    this.todoList.push({
+      task: todo.task,
+      completed: false,
+    });
+  }
 
-   onAddTodo(task: string, completed: boolean): void {
-  //   this.todos.push({
-  //     id: this.todos.length + 1,
-  //     task,
-  //     completed,
-  //   });
-   }
+  updateTodo(todo: Todos) {
+    this.todoList.update(todo.$key, {
+      task: todo.task,
+      completed: false,
+    });
+  }
+
+  deleteProduct($key: string) {
+    this.todoList.remove($key);
+  }
 }

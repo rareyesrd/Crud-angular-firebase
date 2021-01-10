@@ -1,12 +1,12 @@
 <ul class="list-group">
   <div class="list-group-item mt-3">
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center justify-content-between mt-2" *ngFor="let todo of todoList">
         <div [ngClass]="{'isComplete': todo.completed}">
             <input type="checkbox"
             (change)="onCompleted(todo)">
              {{ todo.task }}
         </div>
-      <div class="close" (click)="onDelete(todo)"> X </div>
+      <div class="close" (click)="onDelete(todo.$key)"> X </div>
     </div>
   </div>
 </ul>

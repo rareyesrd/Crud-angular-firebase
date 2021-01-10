@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { NgForm } from '@angular/forms';
 import { Todos } from 'src/app/models/todos';
+import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
   selector: 'app-todo',
@@ -10,33 +11,20 @@ import { Todos } from 'src/app/models/todos';
 export class TodoComponent implements OnInit {
   todos: any[];
   task: string;
-
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private todoService: TodosService) {}
 
   ngOnInit(): void {
-    this.db
-      .list('Todos')
-      .valueChanges()
-      .subscribe((todo) => {
-        this.todos = todo;
-      });
+    this.todoService.getProducts();
   }
 
-  addTodo(): void {
-    this.db.list(`Todos`).push({
-      id: this.todos.length + 1,
-      task: this.task,
-      completed: false,
-    });
-    this.task = '';
+  addTodo(todoForm: NgForm) {
+    if (todoForm.value.$key == null) this.todoService.onAddTodo(todoForm.value);
+    else this.todoService.updateTodo(todoForm.value);
+    this.resetForm(todoForm);
   }
 
-  onDeleteTodo(todo: Todos): void {
-    const ref = this.db.list(`Todos`).valueChanges()
-    .subscribe((todo) => {
-      console.log(todo.id);
-    });
-    // console.log(ref);
-    // ref.remove(`${todo.id}`);
+  resetForm(productForm?: NgForm) {
+    if (productForm != null) productForm.reset();
+    this.todoService.selectedProduct = new Todos();
   }
 }
