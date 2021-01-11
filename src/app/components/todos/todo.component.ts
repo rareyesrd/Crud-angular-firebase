@@ -9,6 +9,7 @@ import { TodosService } from 'src/app/services/todos.service';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
+  title = 'Crud app'
   todoList: Todos[];
   todos: any[];
   task: string;

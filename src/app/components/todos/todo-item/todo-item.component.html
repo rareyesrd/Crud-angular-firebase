@@ -2,11 +2,11 @@
   <div class="list-group-item mt-3">
     <div class="d-flex align-items-center justify-content-between mt-2">
         <div [ngClass]="{'isComplete': todo.completed}">
-            <input type="checkbox"
+            <input type="checkbox" class="mr-1"
             (change)="onCompleted(todo)">
-             {{ todo.task }}
+            <span>{{ todo.task }}</span>
         </div>
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
           <div class="update mr-1" (click)="onEdit(todo)"><i class="fa fa-pencil-alt"></i> </div>
           <div class="close" (click)="onDelete(todo.$key)"><i class="fa fa-window-close"></i> </div>
         </div>

@@ -1,17 +1,39 @@
-.close{
-    background-color: red;
-    color: #fff;
-    padding: 5px 7px;
-    cursor: pointer;
-    border-radius: 5px;
+.close {
+  background-color: red;
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
 }
-.update{
-    background-color: gray;
-    color: #fff;
-    padding: 5px 7px;
-    cursor: pointer;
-    border-radius: 5px;
+
+.update {
+  background-color: rgb(128, 128, 128);
+  color: #fff;
+  padding: 5px 7px;
+  cursor: pointer;
+  border-radius: 5px;
+  opacity: 0.8;
 }
-.isComplete{
-    text-decoration: line-through;
+
+.update:hover {
+  opacity: 1;
+}
+
+.list-group-item {
+    background-color: #fff;
+  box-shadow:
+    0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+    border-radius: 5px;
+    border: none;
+}
+
+.isComplete {
+  text-decoration: line-through;
+
+}
+
+.isComplete span {
+  color: red;
+  opacity: 0.5;
 }
